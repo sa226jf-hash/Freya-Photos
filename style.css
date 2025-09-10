@@ -332,7 +332,7 @@ nav a.active {
 .brollop-hero, 
 .portratt-hero, 
 .foretag-hero {
-  height: 920px; /* Täck hela skärmen */
+  height: 100vh; /* Täck hela skärmen */
   display: flex; /* Flexbox */
   flex-direction: column; /* Stapla innnehållet vertikalt */  
   justify-content: center; /* Centrera innehåll  */
