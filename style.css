@@ -1,0 +1,2055 @@
+/* För allt */    
+* { 
+  margin: 0; /* Ta bort extra marginaler runt element som standard */
+  padding: 0; /* Ta bort extra utrymme runt innehållet i element som standard */
+  font-family: 'Montserrat', Tahoma, Geneva, sans-serif; /* Typsnitt */
+  color: #fff; /* Standardfärg på text */
+  text-wrap: balance; /* Balansera text vid radbrytning */
+  overflow-wrap: break-word; /* Fallback för ovan */
+}
+/* För alla element samt deras before/after-pseudoelement */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Padding och border ingår i elementets totala storlek */
+}
+
+/* För <body> och <html> */
+body, html {
+  overflow-x: hidden; /* Hindrar horisontell scroll */
+  scroll-behavior: smooth; /* Gör scrollningen mjuk */
+}
+
+/* #region TEXT */
+/* Generella egenskaper för alla rubriker */
+h1, h2, h3, h4, h5 {
+  text-transform: uppercase; /* Gör all rubriktext till versaler */
+  font-weight: 300; /* Tunnare stil för rubriker */
+}
+
+/* Storlek på rubriker */
+h1 { 
+  font-size: 4rem; /* Storlek på text */
+}
+h2 { 
+  font-size: 1.8rem; /* Storlek på text */
+}
+h3 { 
+  font-size: 1.2rem; /* Storlek på text */
+}
+h4 {
+  letter-spacing: 0.04rem; /* Ökat bokstavsavstånd för bättre läsbarhet */
+  font-size: 1.1rem; /* Storlek på text */
+}
+
+/* Länkar */
+a { 
+  text-decoration: none; /* Tar bort understrykning på alla länkar */
+}
+
+/* Fokusstilar för tillgänglighet */
+a:focus-visible,
+h1:focus-visible,
+h2:focus-visible,
+h3:focus-visible,
+h4:focus-visible,
+h5:focus-visible,
+h6:focus-visible,
+button:focus-visible
+ {
+  outline: 2px solid;  /* Tydlig vit kontur för fokus */
+  outline-offset: 4px; /* Ger luft mellan konturen och elementet */
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);  /* Extra visuell markering med skugga */
+}
+
+/* Hovereffekter för rubriker i herodelarna på olika sidor */
+.om-mig-hero h1:hover,
+.barn-och-familj-hero h1:hover,
+.brollop-hero h1:hover,
+.portratt-hero h1:hover,
+.foretag-hero h1:hover {
+  transform: scale(1.05); /* Skala upp vid hover */
+}
+/* #endregion */
+
+
+/* #region HEADER */
+header {
+  position: fixed; /* Headern är på samma plats trots scrollning */
+  width: 100%; /* Headern täcker hela bredden */
+  height: 80px; /* Höjden på headern */
+  display: flex; /* För att kontrollera positionering i headern */
+  background-color: #0000002f; /* Transparent bakgrund med mörk nyans */
+  justify-content: space-between; /* Mellanrum mellan logga och meny */
+  align-items: center; /* Centrera vertikalt */
+  padding: 0 30px; /* Innehållets avstånd från kanterna */
+  z-index: 9; /* Behåll headern längst fram */
+}
+/* Text och länkar i headern */
+.logo-text a {
+  font-size: 1.6rem; /* Storlek på text */
+  letter-spacing: 0.11rem; /* Avstånd mellan bokstäver */
+  text-transform: uppercase; /* Versaler */
+  white-space: nowrap; /* Förhindrar radbrytning */
+  cursor: pointer; /* Muspekaren blir pekande hand vid interaktion */
+  transition: inherit; /* Ärver transition från överordnade element */
+}
+/* #endregion */
+
+
+/* #region NAVIGATIONSMENY */
+/* Navigationsfält i headern med horisontellt placerade länkar */
+.navbar {
+  display: flex; /* För att justera layouten */
+  flex-direction: row; /* Placera länkarna i horisontiell rad */
+  align-items: flex-end; /* Justerar linjeras nederkant */
+  z-index: 10; /* Se till att navbaren inte hamnar bakom andra element */
+}
+/* Alternativen i menyn */
+.navbar a, .subnavbtn {
+  background: none; /* Ta bort bakgrund på text */
+  border: none; /* Ta bort ram runt knappar */
+  font-size: 1.4rem; /* Storlek på text */
+  text-transform: uppercase; /* Versaler på all text */
+  letter-spacing: 0.11rem; /* Avstånd mellan bokstäver */
+  padding: 2px 0; /* Padding på knappar */
+  margin-left: 12px; /* Utrymme mellan länkar/knappar */
+  cursor: pointer; /* Muspekaren blir pekande hand vid interaktion */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Mjuk övergång till opacity och transformering */
+  white-space: nowrap;
+}
+/* Länkar/alternativ i menyn */
+.navbar a {
+  float: left; /* Alternativen i undermenyn ligger till vänster */
+}
+/* Sidan som är aktiv */
+nav a.active {
+  font-weight: 500; /* Fetare text på aktiva länkar */
+  border-bottom: 1px solid #fff; /* En linje under aktiva länkar */
+}
+/* Fokus och tab-styling för underalternativ i menyn */
+.navbar a:focus-visible,
+.navbar .subnavbtn:focus-visible {
+  outline: 2px solid #ffffff; /* Vit färg för fokusringen */
+  background-color: rgba(0, 0, 0, 0.089); /* Lätt bakgrundsfärg vid fokus */
+}
+/* Styr utseendet på pilikonen bredvid undermenyalternativ */
+.subnavbtn .dropdown {
+  font-size: 0.7rem; /* Storleken på pilikonen bredvid undermenylänkar */
+  margin-left: -6px;  /* Utrymme runt (-flyttar ikonen närmare texten */
+}
+/* Hover-effekt för huvudmenylänkar och undermenyknappar */
+.navbar a:hover,
+.subnavbtn:hover {
+  transform: scale(1.05); /* Skala upp vid hover */  
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smidig övergång vid skalning och opacitet */
+}
+/* Vad som händer med övriga alternativ när ett hovras i menyn */
+.navbar:hover > a:not(:hover),
+.navbar:hover > .subnav:not(:hover) > .subnavbtn {
+  opacity: 0.6; /* Minska synligheten på övriga alternativ */
+  transform: scale(0.9); /* Skala ner övriga alternativen */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smidig övergång */
+}
+/* Undermenyns innehåll */
+.subnav-content {
+  display: none; /* Alternativen döljs innan interaktion */
+  position: absolute; /* Placera undermenyn relativt till sin förälder */
+  opacity: 0; /* Osynlig tills den ska visas */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Mjuk övergång för synlighet och rörelse */
+}
+/* Alternativen i undermenyerna */
+.subnav-content li {
+  display: block; /* Placera varje alternativ på ny rad */
+  list-style: none; /* Ta bort punktmarkeringar */
+  font-size: 0.8rem; /* Storlek på text */
+  text-align: center; /* Centrera text */
+}
+/* Hover-effekt för undermenylänkar */
+.subnav-content ul > li:hover a {
+  transform: scale(1.05); /* Skala upp vid hover */
+  transition: transform 0.3s ease; /* Mjuk övergång för uppskalning */
+}
+/* Vad som händer med övriga alternativ när ett hovras i undermenyn */
+.subnav-content ul:hover > li:not(:hover) a {
+  opacity: 0.6; /* Minska synligheten på övriga alternativ */
+  transform: scale(0.9); /* Skala ner övriga alternativen */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smidig övergång */
+}
+
+/* Undermenyn öppnas när användaren hovrar eller använder tabbtangenten */
+.subnav:hover .subnav-content,
+.subnav:focus-within .subnav-content {
+  display: block; /* Visa undermeny */
+  opacity: 1; /* Gör undermenyn fullt synlig */
+  transform: translateY(0); /* Flytta ner till ursprunglig plats (för in-animation) */
+}
+
+/* MENU TOGGLE */
+/* Dölj menyknappen (hamburgermenyn) när skärmen är stor */
+.menu-toggle {
+  display: none; /* Dölj menyknappen i desktop-läge */
+}
+/* Menyikonen (hamburgermenyn) */
+.menu-open {
+  display: inline; /* Visa menyikonen när togglemeny är tillgänglig (mindre skärm) */
+}
+/* Stängningsikonen (X-ikonen) */
+.menu-toggle .menu-close {
+  display: none; /* Dölj X-ikonen som standard */
+}
+.menu-close {
+  display: none; /* Dölj stängningsikonen när togglemenyn är stängd */
+}
+/* Checkbox-elementet som används för att toggla meny */
+.menu-checkbox {
+  display: none; /* Dölj checkboxen */
+}
+/* När chekcboxen är ikryssad - menyn öppen */
+.menu-checkbox:checked + .menu-toggle .menu-open {
+  display: none; /* Dölj menyknappen/hamburgerikonen */
+}
+.menu-checkbox:checked + .menu-toggle .menu-close {
+  display: block; /* Visa stängningsikonen (X) */
+}
+/* När menyn är öppen */
+.menu-checkbox:checked ~ .navbar {
+  display: flex; /* Flexbox */
+  flex-direction: column; /* Stapla innnehållet vertikalt */  
+  position: fixed; /* Positionera menyn fast ovanpå allt annat */  
+  width: 100%; /* Ta upp hela skärmens bredd */
+  height: 100%; /* Ta upp hela skärmens höjd */
+  top: 0; /* Placering från toppen */
+  right: 0; /* Placering från höger sida */
+  align-items: center; /* Centrera vertikalt */
+  padding: 30px 0; /* Avstånd till övre/nedre kanterna */
+  z-index: 1000; /* Så att menyn garanterat ligger över allt annat */
+}
+/* Menyknappen när den får fokus – för tangentbordsanvändare */
+.menu-toggle:focus-visible {
+  outline: 2px solid #ffffff; /* Vit färg för fokusringen */
+  background-color: rgba(0, 0, 0, 0.089); /* Lätt bakgrundsfärg vid fokus */
+}
+/* Om menyknappen får fokus - menyn öppnas */
+.menu-toggle:focus-visible .menu-open {
+  display: none; /* Dölj hamburgermenyn */
+}
+.menu-toggle:focus-visible .menu-close {
+  display: block; /* Visa stängningsikonen (X) */
+}
+/* #endregion */
+
+/* #region HOPPA TILL INNEHÅLL */
+/* Hoppa till innehåll-länk (för tillgänglighet) */
+.skip-link {
+  position: absolute; /* Justera positionen utan att ta hänsyn till andra element */
+  top: -40px; /* Avstånd från toppen*/
+  left: 2rem; /* Avstånd från vänster sida */
+  background-color: #ffffffc0; /* Bakgrundsfärg */
+  color: #000; /* Text/länkfärg */
+  padding: 0.5rem 1rem; /* Utrymme runt texten */
+  z-index: 1000; /* Så att länken är över alla annat */
+  border-radius: 3px; /* Mjuka hörn */
+  box-shadow: 0 0 5px rgba(0,0,0,0.2); /* Skugga */
+  transition: top 0.3s ease; /* Mjuk övergång */
+  scroll-margin-block-start: 120px;
+}
+/* När länken får fokus */
+.skip-link:focus {
+  top: 6rem; /* Avstånd från toppen */
+}
+/* #endregion */
+
+/* #region TILLBAKA UPP-KNAPP */
+/* Knappen "till toppen" */
+.back-to-top {
+  position: fixed; /* Fast position även vid scroll */
+  display: flex; /* Ligg på rad */
+  background-color: #ffffff69; /* Semitransparent vit bakgrund */
+  bottom: 1.5rem; /* Position från botten av sidan */
+  right: 1.5rem; /* Position från högerkanten */
+  padding: 0.5rem; /* Utrymme runt innehållet */
+  text-transform: uppercase; /* Gör texten till versaler */
+  letter-spacing: 0.11rem; /* Lite extra mellanrum mellan bokstäverna */
+  text-align: center; /* Centrera text */
+  border-radius: 3rem; /* Rundade hörn */
+  font-size: 1rem; /* Storlek på text */
+  font-weight: 500; /* Textvikt */
+  color: #000; /* Textfärg */
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5); /* Liten skugga för att lyfta knappen från bakgrunden */
+  z-index: 1000; /* Så att knappen är över alla annat */
+  transition: transform 0.3s ease, color .3s ease; /* Mjuk övergång */
+}
+.back-to-top p {
+  color: #000; /* textfärg */
+}
+/* Utseende för pilen i knappen */
+.back-to-top span {
+  font-size: 1rem; /* Storlek på text */
+  color: #000; /* Färg på pilen */
+  transition: .3s ease; /* Mjuk övergång */
+}
+/* Vid hover */
+.back-to-top:hover {
+  transform: translateY(-5px); /* Flytta knappen uppåt */
+  color: #fff; /* Textfärg */
+  transition: .3s ease; /* Mjuk övergång */
+}
+/* Pilen vid hover */
+.back-to-top:hover span {
+  color: #fff; /* Ändra färg till vit (ta bort opacitet) */
+  transition: .3s ease;
+}
+/* #endregion */
+
+
+/* #region SEKTIONER */
+/* Sektioner för fotograferingstyper */
+.familj-section,
+.barn-section,
+.gravid-section,
+.husdjur-section,
+.brollop-section {
+  display: flex; /* Använder Flexbox för centrering */
+  justify-content: center; /* Centrera innehåll  */
+  align-items: center; /* Centrera vertikalt */
+  padding: 1rem; /* Inre marginaler */
+}
+/* Sektioner som innehåller heltäckande bakgrundsbild  */
+.priser, 
+.vanliga-fragor, 
+.kontakt-boka {
+  background-repeat: no-repeat; /* Upprepa inte bakgrunden */
+  background-position: center; /* Centrera bilden */
+  background-size: cover; /* Bilden täcker hela ytan */
+  width: auto; /* Automatisk bredd beroende på innehåll */
+  min-height: 100vh; /* Minsta höjd är hela skärmen */
+}
+/* Hero-sektioner */
+.index-hero,
+.om-mig-hero,
+.barn-och-familj-hero, 
+.brollop-hero, 
+.portratt-hero, 
+.foretag-hero {
+  height: 100vh; /* Täck hela skärmen */
+  display: flex; /* Flexbox */
+  flex-direction: column; /* Stapla innnehållet vertikalt */  
+  justify-content: center; /* Centrera innehåll  */
+  text-align: center; /* Centrera text */
+}
+
+/* Info och priser sektion */
+.info-och-priser {
+  padding: 2rem 6rem; /* Utrymme runt innehåll */
+  margin: 0 auto; /* Inget avstånd vertikalt och centrerad horisontellt */
+}
+.info-text {
+  text-align: center; /* Centrera text */
+  max-width: 1000px; /* Max bredd */
+  margin: 0 auto;  /* Inget avstånd vertikalt och centrerad horisontellt */
+}
+.paket-rad {
+  display: grid; /* Grid layout **/
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Kolumner */
+  gap: 1.5rem; /* Avstånd mellan kolumner */
+  max-width: 1400px; /* Max bredd */
+  margin: 0 auto; /* Inget avstånd vertikalt och centrerad horisontellt */
+}
+.paket {
+  width: 100%; /* Bredd */
+  backdrop-filter: blur(10px); /* "Glas-effekt */
+  padding: 1.5rem; /* Utrymme runt innehåll */
+  padding-bottom: 5rem; /* Utrymme nedtill (ge plats åt tillägg) */
+  margin: 2rem auto; /* Avstånd vertikalt och centrerad horisontellt */
+  border-radius: 1rem; /* Rundade hörn */
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.185); /* Skugga */
+}
+.paket hr {
+  margin: 1rem auto; /* Avstånd vertikalt och centrerad horisontellt */
+  } 
+  
+/* Rubriker, rubriker och text */
+  .info-text h2, .info-text p,.paket h2, .paket h3, .paket ul, .paket li, .paket p, .paket-knapp a {
+    color: #000; /* Textfärg */
+  }
+  .info-text h2 {
+    font-size: 2rem;
+    margin-top: 2rem;;
+  }
+  .info-text p {
+    line-height: 1.5; /* Radhöjd */
+    margin: 1rem 5rem;  /* Avstånd runt element */
+  }
+   /*Rubriker */
+  .paket h2 { 
+    font-size: 1.2rem; /* Textstorlek */
+    letter-spacing: 0; /* Standard mellanrum mellan bokstäver */
+    text-align: center; /* Centrera rubrik */
+  }
+  .paket h3 { 
+    font-size: 1.0rem; /* Textstorlek */
+    font-weight: 500; /* Textvikt */
+    letter-spacing: 0; /* Standard mellanrum mellan bokstäver */
+    text-align: center; /* Centrera rubrik */
+  }
+  /* Listor */
+  .paket ul {
+    margin: .2rem;  /* Avstånd runt lista */
+    list-style-position: inside; /* Listan ska vara innehållstext */
+    text-align: left; /* Text justerad till vänster */
+    }
+  .paket li {
+    padding-bottom: .5rem; /* Utrymme under */
+    font-size: 0.9rem; /* Textstorlek */
+    color: #000; /* Textfärg */
+    list-style-position: outside; /* Samma indrag för alla rader i listpunkten */
+    margin-left: 1rem;
+  }
+  /* Paragrafer */
+  .paket p {
+    position: absolute; /* Absolut position för justering */
+    bottom: 20px; /* Från botten */   
+    font-size: 0.7rem; /* Textstorlek */
+    font-style: italic; /* kursiv text */
+    font-weight: 500; /* Textvikt */
+    letter-spacing: 0.02rem; /* Avstånd mellan bokstäver */
+  }
+.paket-knapp {
+  text-align: center; /* Centrera text/länk */
+  font-size: 2rem; /* Textstorlek */
+  text-transform: uppercase; /* Versaler */
+  margin-bottom: 2rem;
+}
+.paket-knapp:hover {
+  transform: scale(1.05);
+}
+/* #endregion*/
+
+
+/* #region STARTSIDA */
+/* Bakgrundsinställningar i hero */
+.index-hero {
+  background-image: url("media/hero-index.webp"); /* Bakgrundsbild */
+  background-repeat: no-repeat; /* Upprepa inte bakgrunden */
+  background-position: center; /* Centrera bilden */
+  background-size: cover; /* Bilden täcker hela ytan */
+}
+/* Inställningar för rubriker i hero */
+.index-hero h1, 
+.index-hero h2, 
+.index-hero h3 {
+  margin: 2rem; /* Avstånd runt rubriker */
+  font-weight: 300; /* Lätt vikt på texten */
+}
+/* Bokningsknappen i hero: */
+.bokningsknapp a {
+  display: inline-block; /* Gör länken till ett block */
+  font-weight: 500; /* Medel vikt på texten */
+  margin-top: 2rem; /* Utrymme ovanför */
+  letter-spacing: 0.07rem; /* Mellanrum mellan bokstäverna  */
+  text-transform: uppercase; /* Versaler */
+  font-size: 1.2rem; /* Storlek på text */
+  cursor: pointer; /* Muspekaren blir pekande hand vid interaktion */
+  transition: color 0.3s ease; /* Lägger till en smidig övergång vid hover för färgändring */
+}
+/* Vid hover */
+.bokningsknapp a:hover {
+  color: #fff; /* Textfärg */
+  transform: scale(1.05); /* Skala upp vid hover */
+}
+
+/* Tjänster-sektionen på startsidan */
+.index-tjanster {
+  background-color: #fff; /* Bakgrundsfärg */
+  padding: 0 2rem; /* Inget utrymme vertikalt och utrymme horisontellt */
+}
+/* Rubriker i tjänster-sektionen */
+.index-tjanster h2, 
+.index-tjanster h3 {
+  color: #000; /* Textfärg */
+  margin: 0.2em auto; /* Avstånd vertikalt och centrerad horisontellt */
+  text-align: center; /* Centrera text */
+}
+.index-presentation {
+  padding: 2rem; 
+  text-align: center;
+}
+/* Rubrik */
+.index-presentation h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #000;
+}
+/* Text */
+.index-presentation p {
+  color: #000; /* Textfärg */
+  font-size: 1.2rem; /* Textstorlek */
+  letter-spacing: 0.05rem; /* Avstånd mellan bokstäverna */
+  line-height: 2; /* Radhöjd */
+  margin: 2rem; /* Avstånd runt text */
+}
+/*CTA knapp */
+.kontakt-boka-knapp {
+  margin: 2rem; /* Avstånd runt knapp */
+}
+/* CTA länk */
+.kontakt-boka-knapp a {
+  color: #000; /* Textfärg */
+  font-size: 1.6rem; /* Tesxtstorlek */
+  font-weight: 400; /* Textvikt */
+  text-transform: uppercase; /* Versaler */
+}
+/* Vid hover */
+.kontakt-boka-knapp:hover {
+transform: scale(1.02); /* Skala upp */
+}
+/* Foto-presentation-sektionen */
+.foto-presentation {
+  display: flex; /* Flexbox för att ordna elementen */
+  flex-direction: row; /* Placera bilderna i horisontiell rad */
+  gap: 1.5rem; /* Avstånd mellan bilderna */
+  padding: 2rem 0; /* Utrymme runt bilderna */
+  justify-content: center; /* Centrera innehåll  */ 
+  max-width: 100%; /* Se till att bilderna inte överskrider bredden */
+  align-items: flex-start; /* För att kontrollera placeringen av texten på bilderna */
+}
+/* Elementet som bilderna ligger i i foto-presentation-sektionen: */
+.foto-presentation-kort {
+  position: relative; /* Gör det möjligt att placera text ovanpå bilden */
+  display: flex; /* Flexbox-layout för att organisera innehållet */
+  max-width: 600px; /* Begränsa bredden på varje kort */
+  height: auto; /* Höjden anpassar sig efter innehållet */
+  flex-shrink: 1; /* Tillåt att elementen krymper */
+  flex-grow: 0; /* Hindra att korten blir större än sin naturliga storlek */
+}
+/* Bilder i foto-presentation-sektionen */
+.foto-presentation-kort img {
+  width: 100%; /* Se till att bilden täcker hela utrymmet i sitt kort */
+  height: auto; /* Bibehåll bildens proportioner */
+  object-fit: contain; /* Hela bilden syns utan att beskäras */
+  max-height: 50vh; /* Bildens största höjd */
+  border-radius: 1rem; /* Rundade hörn */
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.185); /* Skugga */
+}
+/* Text på bilder i foto-presentation */
+.foto-presentation-kort h3 {
+  position: absolute; /* Gör att texten placeras ovanpå bilden */
+  bottom: 10%; /* Placera texten nära botten av bilden */
+  width: 100%; /* Texten ska täcka hela bredden av bilden */
+  padding: 0.5rem; /* Utrymme för texten */
+  color: #fff; /* Textfärg */
+  backdrop-filter: blur(10px); /* "Glas-effekt" */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5); /* Skugga */
+  font-size: 2rem; /* Storlek på text */
+  font-weight: 500; /* Text vikt */
+  z-index: 2; /* Se till att texten placeras ovanpå bilden */
+}
+/* Länk i foto-presentation (texten på/i biderna) */
+.foto-presentation a {
+  text-decoration: none; /* Ta bort understrykning */
+}
+/* Vid hover */
+.foto-presentation-kort:hover {
+  transform: scale(1.05); /* Skala upp vid hover */
+}
+/* Linje - separator över och under citaten */
+.index-tjanster hr {
+  border: 0; /* Ta bort standard border */
+  border-top: 1px solid #000; /* Skapa en tunn linje */
+  margin: 1rem auto;  /* Avstånd vertikalt och centrerad horisontellt */
+  height: 1px; /* Tunn linje */
+}
+/* Kunder-sektionen */
+.kunder {
+  background-color: #fff; /* Bakgrundsfärg */
+  align-items: center; /* Centrera vertikalt */
+  text-align: center;
+}
+/* Rubriker till kundcitaten */
+.kunder h2 {
+  font-family: 'ephesis', 'Montserrat', Tahoma, Geneva, sans-serif; /* Typsnitt */
+  text-transform: none; /* Inte bara versaler */
+  font-size: 3rem; /* Storlek på text */
+}
+.kunder h3 {
+  font-size: 1rem; /* Storlek på text */
+}
+/* Citatens gemensamma låda */
+.kundcitat {
+  display: flex; /* Flexbox */
+  flex-direction: row; /* Placera på rad */
+  gap: 20px; /* Mellanrum mellan citat */
+  align-items: stretch; /* Alla artiklar lika höga */
+  justify-content: center; /* Centrera innehåll  */
+}
+/* Citatens enskilda "låda" */
+.kundcitat article {
+  display: flex; /* Flexbox */
+  flex-direction: column; /* Placera i kolumn */
+  flex: 1; /* Alla lika breda */
+  justify-content: space-between; /* Håll avstånd från annat innehåll */
+  padding: 1rem; /* Utrymme runt innehåll */
+  min-height: 100px; /* Garantera tillräcklig höjd */
+}
+/* Stjärnorna i citaten */
+.kunder h4 {
+  display: flex; /* Flexbox */
+  justify-content: center; /* Centrera innehåll  */
+  color: #000; /* Färg */
+  font-size: 1.2rem;
+  margin: .5rem;  /* Avstånd runt rubrik */
+}
+/* Själva citatet */
+.kundcitat p {
+  flex-grow: 1; /* Tillåt att växa */
+  color: #000; /* Textfärg */
+  font-size: 1rem; /* Textstorlek */
+  line-height: 1.5; /* Radhöjd */
+  padding: 0.5rem;
+}
+/* Kundens namn/id längst ner */
+.kund-id {
+  font-family: 'ephesis', 'Montserrat', Tahoma, Geneva, sans-serif;
+  font-size: 1.4rem; /* Textstorlek */
+  font-weight: 500; /* Textvikt */
+  color: #000; /* Textfärg */
+  margin-top: auto; /* Tryck ner till botten */
+}
+/* #endregion */
+
+/* #region OM MIG */
+/* Om mig hero */
+.om-mig-hero {
+  background-image: url("media/freya.webp"); /* Bakgrundsbild */
+  background-repeat: no-repeat; /* Upprepa inte bakgrunden */
+  background-position: center; /* Centrera bilden */
+  background-size: cover; /* Bilden täcker hela ytan */
+}
+/* Om-mig-presentation-sektionen */
+.om-mig-presentation {
+  display: flex; /* Flexbox */
+  flex-direction: column; /* Stapla innnehållet vertikalt */
+  background-image: url("media/om-mig-bg.webp"); /* Bakgrundsbild */
+  background-repeat: no-repeat; /* Upprepa inte bakgrunden */
+  background-position: center; /* Centrera bilden */
+  background-size: cover; /* Bilden täcker hela ytan */
+  min-height: 100vh; /* Minsta höjd på sektionen */
+  padding: 80px 20px; /* Utrymme runt innehållet */
+  justify-content: center; /* Centrera innehåll  */
+}
+
+.presentation-kolumner {
+  display: flex; /* Flexbox */
+  flex-wrap: wrap; /* För responsiv layout */
+  align-items: stretch; /* Sträcker kolumner till samma höjd */
+  gap: 1rem; /* Avstånd mellan kolmuner */
+  backdrop-filter: blur(10px); /* "Glas-effekt */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); /* Skugga */
+  padding: 1rem; /* Utrymme runt innehållet/texten */
+  border-radius: 0.75rem; /* Rundade hörn */
+}
+/* Om mig rubrik */
+.om-mig-presentation h2 {
+  font-family: 'Ephesis', 'Montserrat', Tahoma, Geneva, sans-serif; /* Typsnitt */
+  font-size: 3rem; /* Storlek på text */
+  text-transform: none; /* Inte bara versaler */
+  text-align: center; /* Centrera text */
+  color: #fff; /* Färg på text */
+  margin-bottom: 2rem; /* Utrymme under */
+}
+/* Kolumner i presentation-sektionen */
+.presentation-kolumn {
+  display: flex; /* Flexbox */
+  flex-direction: column; /* Stapla innnehållet vertikalt */  
+  flex: 1; /* Tillåt att växa och krympa */
+  padding: 1rem; /* Utrymme runt innehållet */
+  min-width: 280px; /* Minsta bredd på kolumn */
+  justify-content: center; /* Centrera innehåll  */
+  gap: 1rem; /* Avstånd mellan textblock */
+}
+/* Inställningar för text i presentation-kolumner */
+.presentation-1 p,
+.presentation-2 p {
+  font-size: 1rem; /* Textstorlek */
+  line-height: 1.6; /* Radavstånd */
+  text-align: center; /* Centrera text */
+  margin: 0.8em auto; /* Avstånd vertikalt och centrerad horisontellt */
+}
+/* Linjen mellan kolumnerna */
+.separator {
+  width: 1px; /* Tjocklek */
+  background-color: rgba(255, 255, 255, 0.2); /* Färg på linje */
+  margin: 1em 0; /* Avstånd vertikalt, inget horisontellt*/
+}
+/* "Hör av dig"-sektionen */
+.horavdig {
+  text-align: center; /* Centrera text */
+  margin: 0; /* Inget avstånd runt */
+  color: #000; /* Textfärg */
+}
+.horavdig h2 {
+  margin: 0; /* Inget avstånd runt */
+}
+.horavdig a {
+  display: inline-block; /* Klickbar länk */
+  font-size: 1.2rem; /* Storlek på text */
+  text-transform: uppercase; /* Versaler */
+  letter-spacing: 0.07rem; /* Avstånd mellan bokstäver */
+  cursor: pointer; /* Muspekaren blir pekande hand vid interaktion */
+  transition: transform 0.3s ease, text-shadow 0.3s ease; /* Mjuk övergång vid hover */
+}
+/* Vid hover */
+.horavdig a:hover {
+  transform: scale(1.05); /* Skala upp vid hover */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.4); /* Skugga på text */
+}
+/* #endregion */
+
+
+/* #region BARN OCH FAMILJ */
+/* Bakgrundsinställningar i hero */
+.barn-och-familj-hero {
+  background-image: url("media/hero-familj.webp"); /* Bakgrundsbild */
+  background-repeat: no-repeat; /* Upprepa inte bakgrunden */
+  background-position: center; /* Centrera bilden */
+  background-size: cover; /* Bilden täcker hela ytan */
+}
+/* Innehållet i varje sektion */
+.content-wrapper {
+  display: flex; /* Flexbox */
+  flex-direction: row; /* Placera innehåll i horisontiell rad */
+  max-width: 1600px; /* Max bredd */
+  padding: 2rem; /* Utrymme runt innehållet */
+}
+/* Sektionerna ligger varannan och innehållet byter plats */
+.familj-section .content-wrapper,
+.gravid-section .content-wrapper {
+  flex-direction: row; /* Placera innehåll i horisontiell rad */
+}
+.barn-section .content-wrapper,
+.husdjur-section .content-wrapper {
+  flex-direction: row-reverse; /* Placera innehållet i horisontiell rad "baklänges */
+}
+/* Inre innehåll - två kolumner */
+.content {
+  display: flex; /* Flexbox */
+  flex-direction: column; /* Stapla innnehållet vertikalt */
+  justify-content: center; /* Centrera innehåll  */
+  margin: 2rem; /* Avstånd runt */
+}
+.content.left {
+  align-items: flex-end; /* Placera text längst höger */
+}
+.content.right {
+  align-items: flex-start; /* Placera text längst vänster */
+}
+/* Bilderna */
+.content img {
+  display: block; /* Ta upp hela utrymmet */
+  border-radius: 12px; /* Rundade hörn */
+  object-fit: contain; /* Beskär inte */
+  max-width: 100%; /* Max bredd */
+  max-height: 90vh; /* Max höjd */
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.185); /* Skugga */
+}
+/* Textinnehåll */
+.content h3 {
+  font-size: 2rem; /* Storlek på text */
+  color: #000; /* Färg på text */
+}
+.content p {
+  font-size: 1.1rem; /* Storlek på text */
+  line-height: 1.6; /* Radavstånd */
+  max-width: 40ch; /* Max radlängd */
+  color: #000; /* Färg på text */
+  text-align: right; /* Text till höger */
+  margin-top: 1em; /* Avstånd upptill */
+}
+.content.right p {
+  text-align: left; /* Text till vänster */
+}
+.content a {
+color: #000; /* Färg på länk */
+}
+/* Boka knapp */
+.las-mer {
+  margin-top: 3rem; /* Utrymme ovanför */
+  text-transform: uppercase; /* Versaler */
+  font-size: 1.2rem; /* Textstorlek */  
+  font-weight: 500; /* Tjocklek på text */
+  border-bottom: solid 1px #000; /* Linje under knappen */
+}
+/* Boka knapp vid hover */
+.las-mer:hover {
+  transform: scale(1.02); /* Skala upp vid hover */
+  }
+/* #endregion */
+
+
+/* #region BRÖLLOP */
+.brollop-hero {
+  background-image: url("media/hero-brollop.webp"); /* Bakgrundsbild */
+  background-repeat: no-repeat; /* Upprepa inte bakgrunden */
+  background-position: center; /* Centrera bilden */
+  background-size: cover; /* Bilden täcker hela ytan */
+  height: 100vh; /* Full höjd för varje sektion */
+}
+/* Bröllop-presentation-sektion */
+.brollop-presentation {
+  text-align: center; /* Centrera text */
+  margin: 2%; /* Avstånd runt */
+  line-height: 1.5; /* Radavstånd */
+  padding: 40px; /* Utrymme runt innehållet */
+}
+/* Text i bröllopssektionerna */
+.brollop-presentation p {
+  margin: 1rem; /* Avstånd runt text */
+}
+.brollop-presentation-kontakt-button {
+  display: inline-block; /* Gör den flexibel för att centrera innehållet */
+  background-color: #000;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  font-size: 1rem; /* Storlek på text */
+  cursor: pointer; /* Muspekaren blir pekande hand vid interaktion */
+  transition: background-color 0.3s ease; /* Mjuk övergång */
+  text-decoration: none; /* Ta bort understrykning */
+  align-items: center; /* Justera innehållet i mitten */
+  justify-content: center; /* Centrerar innehållet horisontellt */
+}
+/* Skicka förfrågan-länk hover */
+.brollop-presentation-kontakt-button:hover {
+  background-color: #000000b9; /* Bakgrundsfärg */
+  transform: scale(1.02); /* Skala upp */
+}
+.kontakt-boka-knapp a:focus-visible,
+.foto-presentation a:focus-visible,
+.las-mer a:focus-visible,
+.boka-brollop a:focus-visible, 
+.brollop-presentation-kontakt-button:focus-visible, 
+.brollop-kontakt-form button:focus-visible,
+.portratt-presentation a:focus-visible {
+  outline: 4px solid #000;
+  outline-offset: 4px;      
+}
+/* Linjerna ovanför och under citaten texten */
+.brollop hr {
+  width: 100%; /* Bred/längd på linjer */
+}
+/* Kunders citat */
+.kunder-brollop {
+  align-items: center; /* Centrera vertikalt */
+  text-align: center; /* centrera text */
+  padding: 2rem; /* Utrymme runt innehåll */
+}
+/* Citaten */
+.kundcitat-brollop {
+  display: flex; /* Flexbox */
+  flex-direction: row; /* Placera på rad */
+  gap: 1rem; /* Mellanrum mellan citat */
+  align-items: stretch; /* Alla artiklar lika höga */
+  justify-content: center; /* Centrera innehåll  */
+}
+/* Egenskaper för rubriker, text och länk */
+.kunder-brollop h2, .brollop h3, .brollop h4,.brollop em, .brollop p, .brollop-section a, .brollop strong {
+  color: #000; /* Textfärg */
+}
+.kunder-brollop h2 {
+  font-family: 'ephesis', 'Montserrat', Tahoma, Geneva, sans-serif; /* Typsnitt */
+  text-transform: none; /* Inte bara versaler */
+  font-size: 3rem; /* Textstorlek */
+}
+.kunder-brollop h3 {
+  font-size: 1rem; /* Storlek på text */
+}
+.kunder-brollop h4 {
+  display: flex; /* Flexbox */
+  justify-content: center; /* Centrera innehåll  */
+  color: #000; /* Färg */
+  margin: .5rem; /* Avstånd runt */
+}
+/* Enhetlig stil för varje citat */
+.kundcitat-brollop article {
+  display: flex; /* Flexbox */
+  flex-direction: column; /* Placera i kolumn */
+  flex: 1; /* Alla lika breda */
+  justify-content: space-between; /* Håll avstånd från annat innehåll */
+  padding: 1rem; /* Utrymme runt innehåll */
+  min-height: 100px; /* Garantera tillräcklig höjd */
+}
+/* Själva citatet */
+.kundcitat-brollop p {
+  flex-grow: 1; /* Tillåt att växa */
+  color: #000; /* Textfärg */
+  font-size: 1rem; /* Textstorlek */
+  line-height: 1.5; /* Radhöjd */
+  padding: 0.5rem;
+}
+/* Innehållet i bröllop-sektionerna */
+.brollop-section .content-wrapper {
+  flex-direction: row; /* Placera innehåll i horisontiell rad */
+  padding: 0; /* Ta bort padding */
+}
+.brollop-section:nth-of-type(even) .content-wrapper {
+  flex-direction: row-reverse; /* Placera innehållet i horisontiell rad "baklänges */
+}
+/* Länk till bokningsförfrågan */
+.boka-brollop {
+  margin-top: 1rem; /* Utrymme ovanför */
+  text-transform: uppercase; /* Versaler */
+  font-size: 1.2rem; /* Textstorlek */  
+  font-weight: 500; /* Tjocklek på text */
+  border-bottom: solid 1px #000;
+}
+/* Länk till bokningsförfrågan vid hover */
+.boka-brollop:hover {
+  transform: scale(1.02); /* Skala upp vid hover */
+}
+/* Bröllopsförfrågan formulär */
+.brollop-forfragan {
+  padding: 0; /* Inget avstånd till innehåll (bakgrundsbild) */
+}
+/* Bakgrundsbild formulär */
+.forfragan-bg {
+background-image: url("media/forfragan-bg.webp"); /* Bakgrundsbild */
+background-repeat: no-repeat; /* Upprepa inte bakgrunden */
+background-position: center; /* Centrera bilden */
+background-size: cover; /* Bilden täcker hela ytan */
+padding: 60px 4%; /* Avstånd till innehåll */
+}
+/* Formulär */
+.brollop-kontakt-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; /* Bredd */
+  min-height: 90vh; /* Minsta bredd */
+  max-width: 800px; /* Max-bredd */
+  margin: 0 auto; /* Inget utrymme vertikalt och centrerad horisontellt */
+  padding: 1.5rem; /* Avstånd till innehåll */
+  background-color: rgba(255, 255, 255, 0.772); /* Bakgrundsfärg */
+  border-radius: 10px; /* Rundade hörn */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Skugga */
+}
+/* Rubriker, labels, input och textarea i formulär */
+.brollop-kontakt-form h2,
+.brollop-kontakt-form h4,
+.brollop-kontakt-form label,
+.brollop-kontakt-form input,
+.brollop-kontakt-form textarea {
+  color: #000; /* Textfärg */
+  text-align: center; /* Centrera text */
+}
+.brollop-kontakt-form h2 {
+  font-size: 3rem; /* Textstorlek */
+  margin-bottom: 2rem; /* Utrymme under */
+}
+.brollop-kontakt-form h4 {
+  text-transform: none; /* Inte bara versaler */
+  margin-bottom: 2rem; /* Utrymme under text */
+}
+.brollop-kontakt-form .form-grupp {
+  margin-bottom: 1.5rem; /* Utrymme under */
+  width: 60%; /* Bredd */
+}
+.brollop-kontakt-form label {
+  display: block; /* Visa som en block-element */
+  margin-bottom: 0.5rem; /* Utrymme under */
+  color: #000; /* Textfärg */
+  font-weight: 500; /* Tjocklek text */
+  text-transform: uppercase; /* Versaler */
+  font-size: 1rem; /* Textstorlek */
+}
+.brollop-kontakt-form input,
+.brollop-kontakt-form textarea {
+  width: 100%; /* Bredd */
+  margin-bottom: 1.5rem; /* Utrymme under */
+  padding: 0.8rem 0; /* Avstånd till innehåll */
+  background-color: transparent; /* Ta bort bakgrundsfärg */
+  border: none; /* Ta bort standardram */
+  border-bottom: 0.1em solid #00000041; /* Streck i underkant */
+  font-size: 0.8rem; /* Texststorlek */
+  outline: none; /* Ta bort outline */
+  transition: border-color 0.3s; /* Mjuk övergång */
+}
+.brollop-kontakt-form textarea {
+  resize: none; /* Tillåt inte förstoring av textarea */
+}
+/* Placeholder */
+.brollop-kontakt-form input::placeholder,
+.brollop-kontakt-form textarea::placeholder {
+  color: #0000008c; /* Färg på placeholder */
+}
+/* Vid fokus */
+.brollop-kontakt-form input:focus-visible,
+.brollop-kontakt-form textarea:focus-visible {
+  border: 2px solid #000; /* Starkare färg på linje i underkant vid fokus */
+}
+/* Skicka förfrågan-knapp */
+.brollop-kontakt-form button {
+  display: flex;
+  background-color: #000;
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem; /* Storlek på text */
+  cursor: pointer; /* Muspekaren blir pekande hand vid interaktion */
+  transition: background-color 0.3s ease; /* Mjuk övergång */
+  margin: 2rem auto;  /* Avstånd vertikalt och centrerad horisontiellt */
+}
+/* Skicka förfrågan-knapp hover */
+.brollop-kontakt-form button:hover {
+  background-color: #000000b9; /* Bakgrundsfärg */
+  transform: scale(1.02); /* Skala upp */
+}
+/* #endregion */
+
+
+/* #region PORTRÄTT */
+.portratt-hero {
+  background-image: url("media/hero-portratt.webp"); /* Bakgrundsbild */
+  background-repeat: no-repeat; /* Upprepa inte bakgrunden */
+  background-position: center; /* Centrera bilden */
+  background-size: cover; /* Bilden täcker hela ytan */
+}
+.portratt-presentation {
+  background-color: #ffffff; /* Bakgrundsfärg */
+  display: grid; /* Använd grid för layout */
+  grid-template-columns: 1fr; /* En kolumn */
+  grid-template-rows: auto auto auto auto; /* Storlek på raderna */
+  padding-bottom: 40px; /* Utrymme runt innehåll nedtill */
+}
+/* Kundcitat */
+.kunder-portratt {
+  align-items: center; /* Centrera vertikalt */
+  padding: 2rem;
+  text-align: center;
+}
+.kundcitat-portratt {
+  display: flex; /* Flexbox */
+  flex-direction: row; /* Placera på rad */
+  gap: 1rem; /* Mellanrum mellan citat */
+  align-items: stretch; /* Alla artiklar lika höga */
+  justify-content: center; /* Centrera innehåll  */
+}
+/* Rubriker & text i kundcitat */
+.kunder-portratt h2 {
+  font-family: 'ephesis', 'Montserrat', Tahoma, Geneva, sans-serif; /* Typsnitt */
+  text-transform: none; /* Inte bara versaler */
+  font-size: 3rem; /* Storlek på text */
+  color: #000; /* Textfärg */
+}
+.kunder-portratt h3 {
+  font-size: 1rem; /* Storlek på text */
+  color: #000; /* Textfärg */
+}
+.kunder-portratt h4 {
+  font-size: 1.2rem;
+  color: #000; /* Textfärg */
+}
+/* Enhetlig stil för varje citat */
+.kundcitat-portratt article {
+  display: flex; /* Flexbox */
+  flex-direction: column; /* Placera i kolumn */
+  flex: 1; /* Alla lika breda */
+  justify-content: space-between; /* Håll avstånd från annat innehåll */
+  padding: 1rem; /* Utrymme runt innehåll */
+  min-height: 100px; /* Garantera tillräcklig höjd */
+}
+/* Själva citatet */
+.kundcitat-portratt p {
+  flex-grow: 1; /* Tillåt att växa */
+  color: #000; /* Textfärg */
+  font-size: 1rem; /* Textstorlek */
+  line-height: 1.5; /* Radhöjd */
+  padding: 0.5rem;
+}
+.boka-portratt-knapp {
+  background-color: #665850;
+  color: #fff;
+  font-size: 1.1rem; /* Storlek på text */
+  text-align: center; /* Centrera text */
+  padding: 1rem;
+  text-transform: uppercase;
+}
+.boka-portratt-knapp:hover {
+  background-color: #665850d8;
+  transform: scale(1.02); /* Skala upp vid hover */
+}
+.portratt-galleri {
+  display: flex; /* Flexbox för att ordna elementen */
+  flex-direction: row; /* Placera bilderna i horisontiell rad */
+  gap: 1rem; /* Avstånd mellan bilderna */
+  padding: 1rem; /* Padding runt bilderna */
+  justify-content: center; /* Centrera innehåll  */
+  max-width: 100%; /* Se till att bilderna inte överskrider bredden */
+}
+.portratt-presentation-kort {
+  position: relative; /* Positionera elementet relativt */
+  align-items: center; /* Centrera vertikalt */
+  max-width: 400px; /* Max bredd */
+  width: fit-content; /* Anpassa storlek till innehållet */
+  height: auto; /* Automatisk höjd */
+  flex-shrink: 1; /* Tillåt att krympa */
+}
+.portratt-presentation-kort img {
+  display: block; /* Visa bild som block */
+  width: 100%; /* Full bredd */
+  height: auto; /* Automatisk höjd */
+  object-fit: contain; /* Fyller hela ytan, beskär om det behövs */
+  max-height: 50vh; /* Högsta höjd för bilderna */
+  border-radius: 1rem; /* Rundade hörn */
+  backdrop-filter: blur(10px); /* "Glas-effekt */
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.185); /* Skugga */
+}
+/* Rubriker & text */
+.portratt-presentation h3 {
+  font-size: 2rem; /* Storlek på text */
+  text-align: center; /* Centrera text */
+  color: #000; /* Textfärg */
+  margin: 2rem; /* Ta bort utrymme runt om */
+}
+.portratt-presentation h4 {
+  font-size: 1rem; /* Storlek på text */
+  margin: 2rem; /* Utrymme under */
+  text-align: center; /* Centrera text */
+  color: #000; /* Textfärg */
+}
+/* #endregion */
+
+
+/* #region FÖRETAG */
+.foretag-hero {
+  background-image: url("media/hero-foretag.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100vh; /* Full höjd för varje sektion */
+}
+.foretag-presentation {
+  display: flex; /* Flexbox */
+  flex-direction: column; /* Stapla innehåll */
+  text-align: center; /* Centrera text */
+  margin: 2%; /* Avstånd runt */
+  line-height: 1.5; /* Radavstånd */
+  padding: 2rem; /* Utrymme runt innehållet */
+}
+.foretag-presentation h1,
+.foretag-presentation h2, 
+.foretag-presentation p {
+  color: #000;
+  margin: 1rem auto;
+  max-width: 1200px;
+}
+.foretag-presentation h1 {
+  font-size: 3rem;
+} 
+.foretag-presentation h5 {
+  color: #000;
+  font-size: 1rem;
+  text-transform: none;
+  font-weight: 500;
+  margin-bottom: 1.5em;
+}
+.foretag article {
+  padding: 0;
+} 
+
+/*Slider */
+.slider-section {
+  padding: 2rem;
+}
+.slider-wrapper {
+  position: relative;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+.slider {
+  display: flex; /* Flexbox */
+  aspect-ratio: 16 / 9; /* Bilddimension */
+  overflow-x: auto; /* Tillåt scrolling på x-axel */
+  scroll-snap-type: x mandatory; /* Scrolla en bild i taget */
+  scroll-behavior: smooth; /* Scrolla mjukt */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5); /* Skugga */
+  border-radius: .5rem; /* Rundade hörn */
+}
+.slider::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+.slider img {
+  flex: 1 0 100%;
+  scroll-snap-align: start;
+  object-fit: cover;
+}
+/* Nav med prickar */
+.slider-nav {
+  display: flex;
+  column-gap: 1rem;
+  position: absolute; /* Placera utan hänsyn till andra element */
+  bottom: 1.25rem; /* Juster från botten */
+  left: 50%; /* Justera från vänster */
+  transform: translateX(-50%); /* Garantera centrering */
+  z-index: 1; /* Håll över bilder */
+}
+/* Prickarnas utseende */
+.slider-nav a {
+  width: .7rem;
+  height: .7rem;
+  border-radius: 50%; /* Rundade hörn (cirklar) */
+  background-color: #fff;
+  opacity: 0.75;
+  transition: opacity ease 250ms;
+}
+/* Prickar vid hover */
+.slider-nav a:hover {
+  opacity: 1; /* Gör fullt synliga */
+}
+
+/* #endregion */
+
+
+/* #region PRISER */
+.priser {
+  display: flex; /* Aktivera flexbox */
+  flex-direction: column;
+  background-image: url("media/bg-priser.webp");
+  background-size: cover; /* Bilden täcker hela ytan */
+  justify-content: center; /* Centrera innehåll  */
+  text-align: center; /* Centrera text */
+  padding: 120px 2rem; /* Avstånd till förälder */
+}
+/* Grid för prislådorna */
+.grid-priser {
+  display: grid; /* Grid */
+  grid-template-columns: 1fr 1fr 1fr; /* Tre kolumner */
+  gap: 2rem; /* Avstånd mellan lådor */
+  height: 100%; /* Höjd */
+  max-width: 100%; /* Maxbredd */
+  margin: auto; /* Centrera */
+  margin-top: 38px; /* Utrymme ovanför */
+  }
+  /* Varje prislåda */
+.service {
+  position: relative; /* Relativ till sin förälder */
+  padding: 20px; /* Utrymme runt innehåller */
+  padding-bottom: 100px; /* Utrymme nedtill (ge plats åt knapp) */
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Ram */
+  backdrop-filter: blur(10px); /* "Glas-effekt */
+  border-radius: 25px; /* Rundade hörn */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5); /* Skugga */
+  }
+  /* Linje */
+.priser hr {
+  margin-top: 1rem; /* Utrymme ovanför */
+  } 
+  /* Listor */
+.priser ul {
+  margin: 20px;  /* Avstånd runt lista */
+  list-style-position: inside; /* Listan ska vara innehållstext */
+  text-align: left; /* Text justerad till vänster */ 
+}
+.priser li {
+  padding-bottom: 10px; /* Utrymme under */
+  font-size: 0.9rem; /* Textstorlek */
+  list-style-position: outside; /* Samma indrag för alla rader i listpunkten */
+  margin-left: .5rem;
+}
+  /* Rubriker */
+.priser h1 {
+  font-size: 4.1rem; /* Textstorlek */
+  }
+.priser h2 {
+  font-size: 1.2rem; /* Textstorlek */
+  margin-bottom: 20px; /* Utrymme under */
+  }
+.priser h3 { 
+  font-size: 1.0rem; /* Textstorlek */
+  letter-spacing: 0; /* Standard mellanrum mellan bokstäver */
+  }
+  /* Paragrafer */
+.priser p {
+  font-size: 0.8rem; /* Storlek på text */
+  font-style: italic; /* kursiv text */
+  padding-bottom: 20px; /* Utrymme under */
+  }
+  /* Knappars egenskaper */
+.boka-knapp, .vanliga-fragor-knapp {
+  position: absolute; /* Absolut position för justering */
+  bottom: 20px; /* Från botten */
+  transform: translateX(-50%); /* Flytta till vänster */
+  width: 90%; /* Bredd av föräldraelement */
+  display: inline-block; /* Gör klikckbar */
+  text-align: center; /* Centrera text */
+  text-transform: uppercase; /* Versaler */
+  background-color: #120e0c8f; /* bakgrundsfärg */
+  border-radius: 3rem; /* Rundade hörn */
+  padding: 20px 0; /* Avstånd vertikalt */
+  letter-spacing: 0.07rem; /* Avstånd mellan bokstäver */
+  transition: .3s ease; /* Mjuk övergång */
+  }
+  /* Knappar vid hover */
+.boka-knapp:hover, .vanliga-fragor-knapp:hover{
+  background-color: #120e0c9a; /* bakgrundsfärg */
+  cursor: pointer; /* Muspekaren blir pekande hand vid interaktion */
+  }
+/* #endregion */
+
+
+/* #region VANLIGA FRÅGOR */
+.vanliga-fragor {
+  display: flex; /* Aktivera flexbox */
+  flex-direction: column;
+  background-image: url('media/bg-vanliga-fragor.webp');
+  background-size: cover; /* Bilden täcker hela ytan */
+  align-items: center; /* Centrera vertikalt */
+  padding: 120px 0; /* Avstånd till förälder */
+  }
+/* Rubrik */
+
+.faq {
+  width: 90%;
+  max-width: 80rem;
+  margin-top: 60px; /* Utrymme ovanför */
+  padding: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Ram */
+  backdrop-filter: blur(10px); /* "Glas-effekt */
+  border-radius: 25px; /* Rundade hörn */
+  box-shadow: 0 8px 32px 0 #120e0c3a; /* Skugga */
+  }
+.accordion-item {
+  background-color: #120e0c46;
+  border-radius: .4rem; /* Rundade hörn */
+  margin-bottom: 10px; /* Utrymme under */
+  padding-left: 20px;
+  box-shadow: .5rem 2px .5rem #120e0c3a;
+  }
+.accordion-link {
+  display: flex; /* För att flexibelt styra element */
+  align-items: center; /* Centrera vertikalt */
+  justify-content: space-between; /* Mellanrum mellan olika delar i element */
+  font-size: 1.2rem; /* Textstorlek */
+  text-decoration: none; /* Ingen understrykning (länk)*/
+  text-transform: uppercase; /* Versaler */
+  width: 100%; /* Full bredd */
+  padding: 1rem 0; /* Avstånd till kant */
+  }
+.accordion h2 {
+  margin: 60px 0 20px 0; /* Avstånd vertikalt och centrera horisontiellt */
+  }
+.accordion span {
+  color: #ffffff; /* Färg på arrows */
+  padding: 10px; /* Avstånd mellan pil och kant */
+  }
+.accordion .arrow-up {
+  display: none; /* Dölj arrow-up */
+  }
+/* Svaren */
+.answer {
+  max-height: 0; /* Ge ingen plats */
+  overflow: hidden; /* Dölj innehåll som inte får plats*/
+  position: relative; /* Relativ till sin förälder */
+  transition: max-height 350ms; /* Maxhöjd animering */
+  }
+.answer::before {
+  content: "";
+  position: relative;
+  width: 20px;
+  height: 90%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  }
+/* Svarens utseende */
+.answer p {
+  color: rgba(255, 255, 255, 0.815); /* Textfärg */
+  font-size: 1.2rem; /* Storlek på text */
+   /* Textstorlek */
+  padding: 20px; /* Avstånd mellan innehåll och kant */
+  }
+.accordion-item:target .answer {
+  max-height: 400px; /* Maxhöjd på svarsfältet */
+  }
+.accordion-item:target .accordion-link .arrow-down{
+  display: none; /* Dölj arrow-down*/
+  }
+.accordion-item:target .accordion-link .arrow-up {
+  display: block; /* Visa arrow-up */
+  }
+.accordion-link:focus-visible + .answer {
+  max-height: fit-content; /* Öppna answer */
+  }
+.accordion-link:focus-visible .arrow-down {
+  display: none; /* Dölj arrow-down */
+  }
+.accordion-link:focus-visible .arrow-up {
+  display: block; /* Visa arrow-up */
+  }
+/* Länk till kontakt */
+.kontakta-mig {
+  display: inline-block;
+  text-decoration: none; /* Ta bort understrykning (länk) */
+  }
+.kontakta-mig:hover {
+  transform: scale(1.05); /* Skala upp vid hover */
+  }
+/* #endregion */
+
+
+/* #region KONTAKT- & BOKNINGSFORMULÄR */
+/* Kontakformulär */
+.kontakt-boka {
+  display: flex;
+  flex-direction: column;
+  background-image: url("media/bg-kontakt-boka.webp");
+  background-size: cover; /* Bilden täcker hela ytan */
+  width: 100%;
+  align-items: center; /* Centrera vertikalt */
+  padding: 120px 10%;
+}
+.kontakt-boka h4 {
+  text-align: center; /* Centrera underrubrik */
+}
+#kontaktformulär-kontakt {
+  width: 100%;
+  margin-top: 40px; /* Utrymme ovanför */
+  text-transform: uppercase;
+  letter-spacing: 0.11rem;
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Ram */
+  backdrop-filter: blur(10px); /* "Glas-effekt */
+  border-radius: 25px; /* Rundade hörn */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5); /* Skugga */
+  }
+fieldset {
+  margin: 20px; /* Utrymme runt */
+  border: solid;
+  border-width: 5px; /* Ramens tjocklek */
+  border-color: #8f857728;
+  padding: 2rem; /* Utrymme runt innehåll */
+  }
+legend {
+  font-size: 2rem; /* Storlek på text */
+   /* Storlek på texten "kontaktformulär" */
+  padding-inline: 0.5rem;
+   /* Avstånd mellan ram och "kontaktformulär" */
+  }
+label {
+  font-size: 1.2rem; /* Storlek på text */
+   /* Storlek på labels */
+  }
+.label-input-kontakt, .arende-kontakt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Centrera vertikalt */
+  margin-bottom: 1rem; /* Utrymme under */
+  gap: 1rem;
+  padding: 0.5rem;
+}
+.label-input-kontakt label {
+  flex: none; /* Låt inte e-post radbryta */
+  text-align: left; /* texten till vänster */
+}
+.meddelande-label-kontakt {
+  margin-left: 8px;
+}
+#kontaktformulär-kontakt input, #kontaktformulär-kontakt select, #kontaktformulär-kontakt textarea {
+  background-color: #120e0c46;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.048); /* Ram */
+  border-radius: 25px; /* Rundade hörn */
+  box-shadow: 0 8px 32px 0 #120e0c3a; /* Skugga */
+  font-size: 1.2rem; /* Storlek på text */
+  width: 100%;
+  padding: 8px 10px;
+  }
+  #kontaktformulär-kontakt textarea {
+  height: 160px; /* höjd */
+  resize: vertical; /* Tillåter endast att ändra höjden */
+  width: 100%;      /* Gör bredden 100% av föräldrakontainern */
+  }
+  #kontaktformulär-kontakt input::placeholder, #kontaktformulär-kontakt textarea::placeholder {
+  color: #ffffff5b; /* Färg på placeholder */
+  font-size: 0.8rem; /* Storlek på text */
+   /* textstorlek */
+  }
+/* När hovrad */
+#kontaktformulär-kontakt input:hover, #kontaktformulär-kontakt select:hover, #kontaktformulär-kontakt textarea:hover {
+  backdrop-filter: blur(10px); /* "Glas-effekt */
+  }
+/* När markerad */
+#kontaktformulär-kontakt input:focus-visible, #kontaktformulär-kontakt select:focus-visible, 
+#kontaktformulär-kontakt textarea:focus-visible, .checkbox-kontakt input:focus-visible ~ .checkmark-kontakt {
+  backdrop-filter: blur(10px); /* "Glas-effekt */
+  outline: 6px solid rgba(255, 255, 255, 0.164); /* Ram */    
+  }
+#kontaktformulär-kontakt select {
+  font-size: 1rem; /* Storlek på text */
+   /* Textstorlek på alternativ i select */
+}
+#kontaktformulär-kontakt optgroup, #kontaktformulär-kontakt option {
+  background-color: #8b7e75; /* Färg på bakgrund i öppen select */    
+  text-transform: uppercase; /* versaler */
+  letter-spacing: 1.11rem;
+   /* Avstånd mellan bokstäver */
+  }
+.aterkoppling-kontakt {
+  margin-left: 8px;
+}
+.send-kontakt {
+  display: flex; /* Placera checkbox och skicka-knapp på rad */
+  align-items: center; /* Centrera vertikalt */
+  gap: 10px; /* Mellanrum mellan checkboxarna och knappen */
+  margin-top: 12px; /* Utrymme ovanför */
+  }
+.checkbox-kontakt {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-left: 8px;
+  cursor: pointer; /* Muspekaren blir pekande hand vid interaktion */
+  font-size: 1rem; /* Storlek på text */
+
+  user-select: none;
+  }
+.checkbox-kontakt input {
+  position: absolute;
+  opacity: 0;
+  }
+.checkmark-kontakt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.2rem;
+
+  width: 1.2rem;
+
+  background-color: #fff;
+  border: 1px solid #120e0c8f;
+  border-radius: 2rem; /* Rundade hörn */
+
+  }
+.checkbox-kontakt:hover input ~ .checkmark-kontakt {
+  background-color: #120e0c50;
+  outline: solid 1px #00000077;
+  }
+.checkbox-kontakt input:checked ~ .checkmark-kontakt {
+  background-color: #00000077;
+  outline: solid 1px #00000077;
+  }
+.skicka-kontakt {
+  font-size: 1.5rem; /* Storlek på text */
+
+  letter-spacing: 0.11rem;
+
+  background-color: #120e0c46;
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Ram */
+  backdrop-filter: blur(10px); /* "Glas-effekt */
+  border-radius: 25px; /* Rundade hörn */
+  box-shadow: 0 8px 32px 0 #120e0c3a; /* Skugga */
+  padding: 10px 20px;
+  margin-left: auto;
+  transition: all 0.2s ease-out;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  float: right;
+  }
+.skicka-kontakt:hover {
+  background-color: #120e0c50;
+  transform: scalex(1.1) translateX(-8px);
+  cursor: pointer; /* Muspekaren blir pekande hand vid interaktion */
+  }
+/* #endregion */
+
+
+/* #region BACKGROUND-OVERLAY */
+
+/* Egenskaper för overlayen */
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 1; /* Lägg den under menyn */
+  background-repeat: no-repeat; /* Upprepa inte bakgrunden */
+  background-position: center; /* Centrera bilden */
+  background-size: cover; /* Bilden täcker hela ytan */
+
+}
+.navbar:hover ~ .background-overlay {
+  opacity: 1;
+  filter: brightness(30%) blur(2px);
+}
+.menu-checkbox:checked ~ .background-overlay {
+  filter: brightness(30%) blur(2px);
+}
+/* När menyn är öppen, lyft fram bakgrundsbilden för respektive sida */
+.menu-checkbox:checked + .menu-toggle + .navbar + .background-overlay-index, 
+.menu-checkbox:checked + .menu-toggle + .navbar + .background-overlay-om-mig,
+.menu-checkbox:checked + .menu-toggle + .navbar + .background-overlay-familj,
+.menu-checkbox:checked + .menu-toggle + .navbar + .background-overlay-brollop,
+.menu-checkbox:checked + .menu-toggle + .navbar + .background-overlay-portratt,
+.menu-checkbox:checked + .menu-toggle + .navbar + .background-overlay-foretag,
+.menu-checkbox:checked + .menu-toggle + .navbar + .background-overlay-priser,
+.menu-checkbox:checked + .menu-toggle + .navbar + .background-overlay-vanliga-fragor,
+.menu-checkbox:checked + .menu-toggle + .navbar + .background-overlay-kontakt-boka {
+  opacity: 1;
+}
+
+
+/* Sidornas olika bakgrundbilder som ska lyftas fram */
+.background-overlay-index { background-image: url('media/hero-index.webp');
+}
+.background-overlay-om-mig { background-image: url('media/freya.webp');
+}
+.background-overlay-familj { background-image: url('media/hero-familj.webp');
+}
+.background-overlay-brollop { background-image: url('media/hero-brollop.webp');
+}
+.background-overlay-portratt { background-image: url('media/hero-portratt.webp');
+}
+.background-overlay-foretag { background-image: url('media/hero-foretag.webp');
+}
+.background-overlay-priser { background-image: url('media/bg-priser.webp');
+}
+.background-overlay-vanliga-fragor { background-image: url('media/bg-vanliga-fragor.webp');
+}
+.background-overlay-kontakt-boka { background-image: url('media/bg-kontakt-boka.webp');
+}
+
+.menu-checkbox:checked + .menu-toggle + .navbar {
+  z-index: 2; /* Se till att menyn hamnar längst fram */
+  }
+/* #endregion */
+
+
+/* #region FOOTER */
+.footer-hr {
+  width: 90%;
+  margin: 1rem auto; /* Avstånd vertiklt och centrerad horisontellt */
+}
+.footer-lankar {
+  display: flex; /* Grid */
+  flex-direction: row; /* Lägg på rad */
+  padding: 2rem 6rem; /* Utrymme runt innehållet */
+}
+#footer-lank-startsida, 
+#footer-lank-om-mig, 
+#footer-lank-barn-och-familj, 
+#footer-lank-brollop, #footer-lank-portratt, 
+#footer-lank-foretag, 
+#footer-lank-priser, 
+#footer-lank-vanliga-fragor, 
+#footer-lank-kontakt-boka {
+  color: #000; /* Textfärg på länk */
+  margin: auto; /* Centrera */
+  white-space: nowrap; /* Förhindrar radbrytning */
+}
+#footer-button a {
+  color: #fff; /* Textfärg på länk i knapp */
+}
+#footer-button {
+  background-color: #000; /* Bakgrundsfärg */
+  text-transform: uppercase; /* Versaler */
+  width: fit-content; /* Bredd baserad på innehållet */
+  padding: 0.5rem .8rem; /* Utrymme runt innehållet */
+  font-size: 0.8rem; /* Textstorlek */
+  cursor: pointer; /* Muspekaren blir pekande hand vid interaktion */
+  transition: background-color 0.3s ease; /* Mjuk övergång */
+  margin: 0 3rem;  /* Avstånd vertikalt, längst till vänster */
+  align-items: center; /* Justera innehållet i mitten */
+}
+.footer-active {
+border-bottom: 1px solid #000; /* En linje under aktiva länkar */
+}
+
+
+/* #region QUERYS */
+/* Beteende & utseende när fönstret/skärmen är under 1280px */
+@media all and (max-width: 1280px) {
+
+/* Toggle menyn */
+.menu-toggle {
+  position: absolute; /* Placera relativt till header */
+  display: flex;  /* Flexbox */
+  cursor: pointer; /* Muspekaren blir pekande hand vid interaktion */
+  right: 40px; /* Menyknapens position */
+  z-index: 2; /* Håll framför */
+}
+.menu-toggle span {
+  font-size: 1.4rem; /* Storlek på text */
+  color: #fff; /* Färg på text och ikon */
+  text-transform: uppercase; /* Versaler */
+  letter-spacing: 0.11rem; /* Avstånd mellan bokstäver */
+  z-index: 2; /* Håll framför */
+}
+navbar a {
+  opacity: 0.8; /* Lite genomskinlig */
+}
+.subnav-content li {
+  opacity: 0.6; /* Lite genomskinlig */
+}
+.subnav-content li:hover {
+  opacity: 1;  /* Helt synlig */
+}
+.subnav {
+  margin-bottom: 1rem; /* Avstånd nedtill */
+}
+
+/* Visa menyn när checkboxen är markerad */
+.menu-checkbox:checked ~ .navbar {
+  display: flex; /* Visa menyn */
+  flex-direction: column; /* Gör menyn vertikal */
+  position: absolute; /* Placera menyn under headern */
+  align-items:last baseline; /* Placera alternativen till höger under knappen */
+  top: 40px; /* Placera menyn strax nedanför headern */
+}
+.menu-checkbox:checked ~ .navbar .subnav-content {
+  display: block; /* Visa undermenyn */
+  opacity: 1; /* Gör synligt */
+  transform: translateY(0); /* Justera om du har en animation för att visa undermenyn */
+}
+.subnav-content {
+  position: relative; /* Så att resterande meny flyttas när undermeny öppnas */
+  display: block; /* Visa undermenyn som standard*/
+  padding: 0.2rem 1.5rem; /* Utrymme runt alternativ */
+}
+/* Navigationsmenyn */
+.navbar {
+  display: none; /* Dölj menyn */
+}
+.foto-presentation-kort h3 {
+  font-size: 1.6rem; /* Storlek på text */
+}
+
+.grid-priser {
+  grid-template-columns: 1fr 1fr; /* Två kolumner */
+}
+}
+
+/* Beteende & utseende när fönstret/skärmen är under 1024px */
+@media all and (max-width: 1024px) {
+
+/*Logga, menyknapp och menyns innehåll */
+.logo-text a, .menu-toggle span, .navbar a, .subnavbtn {
+  font-size: 1.2rem; /* Storlek på text */
+}
+.foto-presentation-kort h3 {
+  font-size: 1.4rem; /* Storlek på text */
+}
+/* Om mig */
+.presentation-1 p {
+  font-size: 0.9rem; /* Storlek på text */
+}
+.presentation-2 p {
+  font-size: 0.7rem; /* Storlek på text */
+}
+.info-och-priser {
+  padding: 2rem 6rem;
+}
+.paket-rad {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+}
+
+/* Beteende & utseende när fönstret/skärmen är mindre än 840px */
+@media all and (max-width: 840px){
+/* STARTSIDA */
+  .index-tjanster {
+    height: 100%; /* Höjd på sidan */
+  }
+  .foto-presentation {
+    display: flex; /* Flexbox */
+    flex-direction: column; /* Stapla innnehållet vertikalt */  
+    width: auto;
+    align-items: center; /* Centrera vertikalt */
+  } 
+  .foto-presentation-kort {
+    width: fit-content;
+  }
+  .foto-presentation-kort h3 {
+    font-size: 1rem; /* Storlek på text */
+  }
+/* OM MIG */
+  .presentation-kolumner {
+    flex-direction: column; /* Stapla innnehållet vertikalt */  
+  }
+  .separator {
+    width: 97%;
+    height: 1px; /* vertikal linjes tjocklek */
+    margin: 0 auto;
+  }
+  .horavdig {
+    margin-bottom: 3rem; /* Utrymme under */
+  }
+/* BARN & FAMILJ */
+  .content-wrapper {
+    display: flex; /* Flexbox */
+    flex-direction: column !important; /* Stapla innnehållet vertikalt VIKTIGT */  
+    padding: 0; /* Utrymme runt innehållet */
+  }
+  .content {
+    margin: 1rem;
+  }
+  .content.left, .content.right {
+    align-items: center; /* Centrera vertikalt */
+  }
+  .content img {
+    max-height: 70vh;
+  }
+  .content.left h3, .content.right h3, .content.left p, .content.right p {
+    text-align: center; /* Centrera text */
+    margin: 0 auto;
+  }
+  .content.left h3, .content.right h3 {
+    font-size: 1.6rem;;
+  }
+  .las-mer, .boka-brollop {
+    margin: 1rem auto 0;
+  }
+  .las-mer:hover, .boka-brollop:hover {
+    transform: scale(1.05); /* Skala upp vid hover */
+  }
+  /* BRÖLLOP */
+  .brollop-kontakt-form .form-grupp {
+      width: 80%;
+    }
+    .brollop-kontakt-form h2 {
+      font-size: 2rem; /* Storlek på text */
+    }
+/* PORTRÄTT */
+    .portratt-galleri {
+      flex-direction: column; /* Placera bilderna i horisontiell rad */
+      margin: auto
+    }
+    .portratt-presentation-kort {
+      margin: 1rem;
+    }
+    .portratt-presentation-kort img {
+      max-height: 70vh; /* Högsta höjd för bilderna */
+    }
+    .boka-portratt a {
+      margin-bottom: 1em;
+    }
+/* PRISER */
+    .grid-priser {
+      grid-template-columns: 1fr; /* En kolumn */
+    }
+    .send-kontakt {
+      display: flex; /* Flexbox */
+      flex-direction: column; /* Stapla innnehållet vertikalt */  
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .skicka-kontakt {
+      padding: 0.7rem 1.2rem;
+      font-size: 1rem; /* Storlek på text */
+    }
+/* KONTAKT & BOKA */
+    .kontakt-boka {
+      padding: 90px 2%;
+    }
+      /* FOOTER */
+  .footer-lankar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 2rem;
+  }
+  #footer-lank {
+    text-align: left;
+    margin: .2rem auto;
+  }
+  }
+
+/* Beteende & utseende när fönstret/skärmen är mindre än 600px */
+@media all and (max-width: 600px){
+
+  .index-hero h1, .om-mig-hero h1, .barn-och-familj-hero h1, .brollop-hero h1, .portratt-hero h1, .foretag-hero h1, .priser h1, .vanliga-fragor h1, .kontakt-boka h1 {
+    font-size: 3rem; /* Storlek på text */
+  } 
+  .index-presentation h1 {
+    font-size: 2rem;
+  }
+  .index-hero h2, .om-mig h2, .barn-och-familj h2, .brollop h2, .portratt h2, .foretag h2, .priser h2, .vanliga-fragor h2, .kontakt-boka h2 {
+    font-size: 1.2rem /* Storlek på text */
+  } 
+  .index p {
+    font-size: 1rem;;
+  }
+  .kontakt-boka-knapp a {
+    font-size: 1.2rem; /* Textstorlek */
+  }
+  .foto-presentation-kort h3 {
+    font-size: 0.8rem; /* Storlek på text */
+  }
+  h4 {
+    font-size: 0.8rem; /* Storlek på text */
+    margin-top: 0.5rem; /* Utrymme ovanför */
+  }
+/* OM MIG */           
+  .om-mig-presentation h2 {
+    font-size: 2.5rem; /* Storlek på text */
+  }
+  
+  .brollop-kontakt-form h2 {
+    font-size: 1.5rem; /* Storlek på text */
+  }
+  .kundcitat, .kundcitat-portratt, .kundcitat-brollop {
+    display: flex; /* Flexbox */
+    flex-direction: column;
+  }
+
+/* KONTAKT - BOKA FORMULÄR */
+  .label-input-kontakt,
+  .arende-kontakt,
+  .meddelande-label-kontakt,
+  .aterkoppling-kontakt,
+  .send-kontakt {
+    display: flex; /* Flexbox */
+    flex-direction: column; /* Stapla innnehållet vertikalt */  
+    }
+  #kontaktformulär-kontakt fieldset {
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }    
+  .meddelande-label-kontakt {
+    align-items: center; /* Centrera vertikalt */
+    gap: 0.8rem; /* Avstånd mellan label och textarea */
+    margin-bottom: 1rem; /* Utrymme under textruta */
+  }
+  label.checkbox-kontakt {
+    font-size: 0.9rem; /* Storlek på text */
+  }
+  .info-och-priser {
+    padding: 2rem 1rem;
+  }
+  .info-och-priser p {
+    margin: 1rem;
+  }
+  .paket-rad {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    gap: 0;
+  }
+  .paket {
+    margin: 1rem auto;
+  }
+
+/* TILLBAKA UPP-KNAPP */
+.back-to-top {
+  font-size: 1rem; /* Storlek på text */
+  bottom: 1rem;
+  right: 1rem;  
+  padding: 0.2rem; /* Utrymme runt text */
+}
+/* Utseende för pilen i knappen */
+.back-to-top span {
+  position: relative; /* Positionera relativt */
+  margin-top: 1px;
+  font-size: 1rem; /* Storlek på text */
+}
+.back-to-top:hover, .back-to-top:hover span {
+  color: #000;
+}
+
+  
+}
+/* #endregion */
+
+@media screen and (max-width: 480px) {
+  #kundberattelser-heading {
+      font-size: 2rem;
+      margin: 0;
+    }
+  .portratt-info h3 {
+    font-size: 1.4rem;
+    }
+  h1, .info-text h2 {
+    text-align: center;
+    font-size: 1.3rem;
+  }
+  .content.left h3, 
+  .content.right h3, 
+  .kunder h4,
+  .kunder-portratt h4, 
+  .kunder-brollop h4 {
+      font-size: 1.2rem;
+    }
+  .index h6,  
+  .brollop-beskrivning h3, 
+  .brollop-beskrivning strong,
+  .kunder h3,  
+  .kunder-portratt h3,
+  .kunder-brollop h3  {
+    font-size: 0.9rem;
+    }
+  .portratt-presentation h4 {
+    font-size: 0.7rem;
+    }
+  .info-och-priser {
+      padding: 1rem;
+      margin: 0;
+    }
+  .index p, 
+  .info-text p, 
+  .om-mig-hero a, 
+  .horavdig a, 
+  .content-wrapper p, 
+  .barn-och-familj a,
+  .brollop-beskrivning p,  
+  .brollop a, 
+  .kunder-brollop p, 
+  .kunder-portratt p, 
+  .infobox p,
+  .infobox em  {
+    font-size: 0.8rem; 
+  } 
+  .boka-portratt {
+    margin-bottom: 1em;
+    font-size: 0.6rem;
+  }
+  .info-text p {
+    padding: 0;
+    margin: 1rem 0.2rem;
+  }
+  .kunder h3,
+  .kunder h4,
+  .kunder-portratt h3, 
+  .kunder-portratt h4,
+  .kunder-brollop h3,
+  .kunder-brollop h4  {
+      margin: 0;
+    }
+  #kontaktformulär-kontakt {
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Ram */
+    }
+  fieldset {
+    padding: 1rem; /* Avstånd mellan innehåll och formulärets kanter */
+    border-width: 2px; /* Ramens tjocklek */
+    }
+  legend {
+    font-size: 1.1rem; /* Storlek på text */
+    padding-inline: 2rem;
+    }
+  label {
+    font-size: 1rem; /* Storlek på text */
+  }
+    .meddelande-label-kontakt {
+      margin-left: 0;
+    }
+
+}
+
+
+
+
+
+

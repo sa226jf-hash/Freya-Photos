@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priser - Freya Photos - Fotograf i Stockholm</title>
+    <meta name="description" content="Prislistor för fotograferingar med plats för hela familjen – även husdjur. Skräddarsydda upplägg, extra bilder och tillval.">
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+  </head>
+<body>
+  
+  <!--HOPPA TILL INNEHÅLL KNAPP/LÄNK-->
+  <a href="#main-content" class="skip-link">Hoppa till innehåll</a>
+    
+    <!-- HEADER START-->
+    <header>
+      <div class="logo-text">
+        <a href="index.html" aria-label="Freya Photos startsida">Freya Photos</a>
+      </div>
+<!-- HAMBURGERMENY-->
+  <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+
+<!-- ÖPPNA / STÄNG KNAPPAR -->   
+  <label for="menu-toggle" class="menu-toggle" aria-label="Öppna meny">
+    <span class="menu-open" aria-hidden="true">☰</span>
+    <span class="menu-close" aria-hidden="true">✖</span>
+  </label>
+
+      <!-- NAVBAR START -->
+      <nav class="navbar" aria-label="Huvudmeny">
+        <a href="index.html" tabindex="0">Startsida</a>
+        <a href="om-mig.html" tabindex="0">Om mig</a>
+
+        <!-- SUBNAV 1 -->
+        <div class="subnav">
+          <button class="subnavbtn" aria-haspopup="true" aria-expanded="false" aria-controls="submenu-foto" tabindex="0">
+            Fotograferingar
+            <span class="material-symbols-outlined dropdown" aria-hidden="true">arrow_drop_down</span>
+          </button>
+          <div class="subnav-content" id="submenu-foto" role="menu" aria-hidden="true">
+            <ul>
+              <li><a href="barn-och-familj.html" tabindex="0">Barn och familj</a></li>
+              <li><a href="brollop.html" tabindex="0">Bröllop</a></li>
+              <li><a href="portratt.html" tabindex="0">Porträtt</a></li>
+              <li><a href="foretag.html" tabindex="0">Företag</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- SUBNAV 2 -->
+        <div class="subnav">
+          <button class="subnavbtn" aria-haspopup="true" aria-expanded="false" aria-controls="submenu-info" tabindex="0">
+            Info
+            <span class="material-symbols-outlined dropdown" aria-hidden="true">arrow_drop_down</span>
+          </button>
+          <div class="subnav-content" id="submenu-info" role="menu" aria-hidden="true">
+            <ul>
+              <li><a href="priser.html" class="active" tabindex="0">Priser</a></li>
+              <li><a href="vanliga-fragor.html" tabindex="0">Vanliga frågor</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <a href="kontakt-boka.html" tabindex="0">Kontakt | Boka</a>
+      </nav>
+      <!-- NAV SLUT -->
+
+ <!--BACKGROUND OVERLAY -->
+<div class="background-overlay background-overlay-priser" aria-hidden="true"></div>
+
+</header>
+<!-- HEADER SLLUT -->
+<main id="main-content">  
+<!-- INNEHÅLL START -->
+<div class="priser">
+  <h1 tabindex="0">Priser
+  </h1>
+  <h4>Här är en sammanfattning av mina vanligaste paket och priser. 
+    För skräddarsydda förfrågningar, kontakta mig!</h4>
+    <div class="grid-priser">
+      <div class="service">
+            <h2>Barn- och familjefotografering</h2> 
+            <h3>Lilla paketet – 1 800 kr</h3>
+            <hr>
+            <ul> 
+              <li>30 min fotografering i studio eller utomhus</li>
+              <li>Onlinegalleri för urval</li>
+              <li>8 högupplösta, redigerade bilder</li>
+              <li>Möjlighet att köpa till extra bilder: 250 kr/st</li>
+            </ul>
+            <p>Tillägg: Milersättning 45kr/mil tillkommer utanför Tyresö</p>
+            
+            <a href="kontakt-boka.html" class="boka-knapp">Boka</a>
+          </div>
+          
+          <div class="service">
+            <h2>Barn- och familjefotografering</h2> 
+            <h3>Mellanpaketet – 2 500 kr</h3>
+            <hr>
+            <ul> 
+              <li>1 timmes fotografering i studio, utomhus eller i hemmet</li>
+              <li>Onlinegalleri för urval</li>
+              <li>15 högupplösta, redigerade bilder</li>
+              <li>Möjlighet att köpa till extra bilder: 250 kr/st eller hela galleriet för 1 200 kr</li>
+            </ul>
+            <p>Tillägg: Milersättning 45kr/mil tillkommer utanför Tyresö</p>            
+            
+            <a href="kontakt-boka.html" class="boka-knapp">Boka</a>
+          </div>
+          
+          <div class="service">
+            <h2>Barn- och familjefotografering</h2> 
+            <h3>Stora paketet – 3 500 kr</h3>
+            <hr>
+            <ul> 
+              <li>1,5–2 timmars fotografering i studio, utomhus eller i hemmet</li>
+              <li>Onlinegalleri för urval</li>
+              <li>25 högupplösta, redigerade bilder</li>
+              <li>Möjlighet att köpa till hela galleriet för 900 kr</li>
+            </ul>
+            <p>Tillägg: Milersättning 45kr/mil tillkommer utanför Tyresö</p>            
+            
+            <a href="kontakt-boka.html" class="boka-knapp">Boka</a>
+          </div>
+
+<div class="service">
+  <h2>Bröllopsfotografering</h2>
+  <h3>Porträtt & Vigsel – 9 000 kr</h3>
+  <hr>
+  <ul>
+    <li>Ca 2 timmar fotografering</li>
+    <li>Porträtt + vigsel</li>
+    <li>50+ redigerade bilder</li>
+    <li>Digital leverans</li>
+  </ul>
+  <p>Extra timme: 1 200 kr</p>
+  <a href="kontakt-boka.html" class="boka-knapp">Boka</a>
+</div>
+
+<div class="service">
+  <h2>Bröllopsfotografering</h2>
+  <h3>Halvdag – 13 500 kr</h3>
+  <hr>
+  <ul>
+    <li>Ca 4 timmar fotografering</li>
+    <li>Porträtt, vigsel och mingel</li>
+    <li>150+ redigerade bilder</li>
+    <li>Onlinegalleri + USB</li>
+    <li>Planeringsmöte inför dagen</li>
+  </ul>
+  <p>Extra timme: 1 200 kr</p>
+  <a href="kontakt-boka.html" class="boka-knapp">Boka</a>
+</div>
+
+<div class="service">
+  <h2>Bröllopsfotografering</h2>
+  <h3>Heldag – 18 000 kr</h3>
+  <hr>
+  <ul>
+    <li>Upp till 8 timmar fotografering</li>
+    <li>Förberedelser, porträtt, vigsel, middag</li>
+    <li>300+ redigerade bilder</li>
+    <li>Onlinegalleri + USB</li>
+    <li>Planeringsmöte och körschema</li>
+  </ul>
+  <p>Extra timme: 1 200 kr</p>
+  <a href="kontakt-boka.html" class="boka-knapp">Boka</a>
+</div>
+
+<div class="service">
+        <h2>Porträttfotografering</h2>
+        <h3>1 800 kr</h3>
+        <hr>
+        <ul>
+          <li>45 min fotografering i studio eller utomhus</li>
+          <li>10 redigerade bilder</li>
+          <li>Perfekt för CV, LinkedIn eller sociala medier</li>
+        </ul>
+        <a href="kontakt-boka.html" class="boka-knapp">Boka</a>
+        </div>
+
+        <div class="service">
+        <h2>Frilansforogrageringar för tidningar/media</h2>
+        <h3>Från 1 500 kr/uppdrag (exkl. moms)</h3>
+        <hr>
+        <ul> 
+          <li>Möjlighet till reportagefoto + korta texter</li>
+          <li>Publiceringsrättigheter</li>
+          <li>Snabba leveranser</li>
+          <li>Högupplösta, redigerade bilder</li>
+        </ul>
+        <p>Tar både korta nyhetsuppdrag och längre reportage. Hör av dig för offert!
+          </p>
+          <a href="kontakt-boka.html" class="boka-knapp">Boka</a>
+        </div>
+
+        <div class="service">
+        <h2>Tillval & information</h2>
+        <hr>
+        <ul>
+          <li>Extra bilder: 250 kr/st</li>
+          <li>Alla bilder levereras digitalt i både webb- och tryckformat</li>
+          <li>Expressleverans (inom 48h) + 500 kr</li>
+          <li>Inramningar och utskrifter finns att beställa</li>
+        </ul>
+        <a href="vanliga-fragor.html" class="vanliga-fragor-knapp">Vanliga frågor</a>
+      </div>
+
+      </div>
+    </div>
+
+  </main>
+    <!--FOOTER-->
+
+    <div class="footer-lankar">
+      <a href="index.html" id="footer-lank-startsida">Startsida</a>
+
+      <a href="om-mig.html" id="footer-lank-om-mig">Om mig</a>
+      
+      <a href="barn-och-familj.html" id="footer-lank-barn-och-familj">Barn och familj</a>
+    
+      <a href="brollop.html" id="footer-lank-brollop">Bröllop</a>
+    
+      <a href="portratt.html" id="footer-lank-portratt">Porträtt</a>
+    
+      <a href="foretag.html" id="footer-lank-foretag">Företag</a>
+    
+      <a href="priser.html" id="footer-lank-priser" class="footer-active">Priser</a>
+    
+      <a href="vanliga-fragor.html" id="footer-lank-vanliga-fragor">Vanliga frågor</a>
+  
+    </div>
+
+  <!-- TILL TOPPEN KNAPP -->
+  <a href="#top" class="back-to-top" tabindex="0">
+    <span class="material-symbols-outlined">
+      arrow_upward
+      </span>
+      Upp
+  </a>
+</body>
+</html>

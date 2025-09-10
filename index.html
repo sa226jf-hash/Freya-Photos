@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freya Photos - Ditt ögonblick, mitt fokus - Fotograf i Stockholm</title>
+    <meta name="description" content="Jag utgår från Stockholm och älskar att berätta historier genom bilder och skapar minnesvära och känslosamma bilder. Låt mig skapa minnen som varar för alltid. Välkommen att utforska och boka en fotografering idag.">
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+  </head>
+  
+<body class="index">
+
+  <!--HOPPA TILL INNEHÅLL KNAPP/LÄNK-->
+  <a href="#main-content" class="skip-link">Hoppa till innehåll</a>
+
+<!-- HEADER START-->
+<header>
+  <div class="logo-text">
+    <a href="index.html" aria-label="Freya Photos startsida">Freya Photos</a>
+  </div>
+<!-- HAMBURGERMENY-->
+<input type="checkbox" id="menu-toggle" class="menu-checkbox">
+
+<!-- ÖPPNA / STÄNG KNAPPAR -->   
+  <label for="menu-toggle" class="menu-toggle" aria-label="Öppna meny">
+    <span class="menu-open" aria-hidden="true">☰</span>
+    <span class="menu-close" aria-hidden="true">✖</span>
+  </label>
+
+<!-- NAVBAR START -->
+<nav class="navbar" aria-label="Huvudmeny">
+<a href="index.html" class="active">Startsida</a>
+<a href="om-mig.html">Om mig</a>
+
+<!-- SUBNAV 1 -->
+<div class="subnav">
+<button class="subnavbtn" aria-haspopup="true" aria-expanded="false" aria-controls="submenu-foto" tabindex="0">
+  Fotograferingar
+  <span class="material-symbols-outlined dropdown" aria-hidden="true">arrow_drop_down</span>
+</button>
+<div class="subnav-content" id="submenu-foto">
+  <ul>
+    <li><a href="barn-och-familj.html">Barn och familj</a></li>
+    <li><a href="brollop.html">Bröllop</a></li>
+    <li><a href="portratt.html">Porträtt</a></li>
+    <li><a href="foretag.html">Företag</a></li>
+  </ul>
+</div>
+</div>
+
+<!-- SUBNAV 2 -->
+  <div class="subnav">
+    <button class="subnavbtn" aria-haspopup="true" aria-expanded="false" aria-controls="submenu-info" tabindex="0">
+      Info
+      <span class="material-symbols-outlined dropdown" aria-hidden="true">arrow_drop_down</span>
+    </button>
+    <div class="subnav-content" id="submenu-info">
+      <ul>
+        <li><a href="priser.html">Priser</a></li>
+        <li><a href="vanliga-fragor.html">Vanliga frågor</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <a href="kontakt-boka.html">Kontakt | Boka</a>
+</nav>
+<!-- NAV SLUT -->
+
+ <!--BACKGROUND OVERLAY -->
+<div class="background-overlay background-overlay-index" aria-hidden="true"></div>
+
+</header>
+<!-- HEADER SLLUT -->
+
+<!-- INNEHÅLL START -->
+<!-- TOP ANKARE -->
+  <div id="top"></div>
+
+<!-- Hero med tabbning -->
+<div class="index-hero">
+  <h1 tabindex="0">Ditt ögonblick,<br/> mitt fokus</h1>
+  <h2>Ni lever stunden – jag bevarar den</h2>
+
+  <nav class="bokningsknapp" aria-label="Boka fotografering">
+    <a href="kontakt-boka.html">Boka din fotografering nu</a>
+  </nav>
+</div>
+<!-- HERO SLUT -->
+ <!-- MAIN CONTENT START -->
+<main id="main-content">
+  <div class="index-tjanster">
+
+  <!-- PRESENTATION -->
+  <div class="index-presentation">
+    <h1>Jag förevigar dina minnen</h1>
+     <hr>
+    <p>
+      Med bas i Tyresö, men med hela Sverige som arbetsplats fångar jag det som betyder något: 
+      skratt, kärlek, närhet och stunder du vill minnas.
+    Från familj och graviditet, till husdjur, porträtt och tidningsuppdrag.
+  Jag tror på bilder som känns - som lever kvar långt efter att ögonblicket har passerat.
+    </p>
+    <div class="kontakt-boka-knapp">
+    <a href="kontakt-boka.html">    
+      Hör av dig, så skapar vi något tillsammans!
+  </a>
+</div>
+<hr>
+   </div>
+
+  <!-- PRESENTATION AV FOTON -->
+    <div class="foto-presentation">
+      <div class="foto-presentation-kort">
+        <a href="barn-och-familj.html">
+          <img src="media/index-familj.webp" width="667" height="1000" alt="Mamma som lyfter upp barn i luften" class="index-img">
+  <h3>Familj</h3></a>
+        </div>
+  <div class="foto-presentation-kort">
+    <a href="brollop.html">
+      <img src="media/index-brollop.webp" width="667" height="1000" alt="Bröllopspar på en strand" class="index-img">
+  <h3>Bröllop</h3></a>
+</div>
+    <div class="foto-presentation-kort">
+      <a href="portratt.html">
+        <img src="media/index-portratt.webp" width="667" height="1000" alt="En kvinna med solglasögon som hukar vid strandkanten" class="index-img">
+  <h3>Porträtt</h3>
+</a>
+</div>
+</div>
+<!-- KUNDCITAT -->
+<div class="kunder" aria-labelledby="kundberattelser-heading">
+  <hr>
+  <h2 id="kundberattelser-heading">Upplevelser</h2>
+  <h3>Delade av mina kunder</h3>
+  <div class="kundcitat">
+    <article class="citat1">
+      <h4>★★★★★</h4>
+      <blockquote>
+        <p>"Det blev inte bara fina bilder, det blev ett fint minne i sig. Så glad att vi valde just Freya."</p>
+        <div class="kund-id">Klara & Lars Lövgren</div>
+      </blockquote>
+    </article>
+    <article class="citat2">
+      <h4>★★★★★</h4>
+      <blockquote>
+        <p>"Det märks att hon älskar det hon gör. Bilderna är fulla av känsla – och vi blev rörda när vi såg resultatet."</p>
+        <div class="kund-id">Josephine Gordon</div>
+      </blockquote>
+    </article>
+    <article class="citat3">
+      <h4>★★★★★</h4>
+      <blockquote>
+        <p>"Vi kände oss så trygga framför kameran – och bilderna blev precis så där äkta och fina som vi hoppades på."</p>
+        <div class="kund-id">Filip Palmén</div>
+      </blockquote>
+    </article>
+  </div>
+  <hr>
+</div>
+</div>
+</main>
+
+<!--FOOTER-->
+<div class="footer-lankar">
+  <a href="index.html" id="footer-lank-startsida" class="footer-active">Startsida</a>
+
+  <a href="om-mig.html" id="footer-lank-om-mig">Om mig</a>
+  
+  <a href="barn-och-familj.html" id="footer-lank-barn-och-familj">Barn och familj</a>
+
+  <a href="brollop.html" id="footer-lank-brollop">Bröllop</a>
+
+  <a href="portratt.html" id="footer-lank-portratt">Porträtt</a>
+
+  <a href="foretag.html" id="footer-lank-foretag">Företag</a>
+
+  <a href="priser.html" id="footer-lank-priser">Priser</a>
+
+  <a href="vanliga-fragor.html" id="footer-lank-vanliga-fragor">Vanliga frågor</a>
+
+</div>
+  <!-- TILL TOPPEN KNAPP -->
+  <a href="#top" class="back-to-top" tabindex="0">
+    <span class="material-symbols-outlined">
+      arrow_upward
+      </span>
+      Upp
+  </a>
+</body>
+</html>
